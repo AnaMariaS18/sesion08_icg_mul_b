@@ -1,0 +1,33 @@
+<canvas id='tablero' width=500 height=450></canvas>
+<script>
+    function polygon(cd,colorBorde,colorRelleno,grosorLinea){
+    ctx.beginPath();
+    ctx.strokeStyle = colorBorde;
+    ctx.fillStyle = colorRelleno;
+    ctx.lineWidth = grosorLinea;
+    ctx.moveTo(cd[0],cd[1]);
+    ctx.lineTo(cd[2],cd[3]);
+    ctx.lineTo(cd[4],cd[5]);
+    ctx.lineTo(cd[6],cd[7]);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.fill();
+    }
+    function recorte(arr){
+    ctx.beginPath();
+    ctx.moveTo(arr[0],arr[1]);
+    ctx.lineTo(arr[2],arr[3]);
+    ctx.lineTo(arr[4],arr[5]);
+    ctx.clip();
+    }
+    var c = document.getElementById('tablero')
+    var ctx = c.getContext('2d')
+ 
+    var arr1 = [316,12,355,12,356,308,316,308];
+    polygon(arr1,'gray','rgba(35,177,77)');
+    polygon([362,235,362,276,17,276,18,235],'gray','rgba(0,163,232)');
+    recorte([392,166,118,16,132,300]);
+    polygon([392,166,118,16,132,300],'gray','rgba(195,195,195)');
+    polygon([392,166,118,16,132,300],'gray','rgba(195,195,195)');
+    triangulo(arr1,'gray','rgba()');
+</script>
